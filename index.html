@@ -27,8 +27,9 @@
     <link rel="stylesheet" href="css/flaticon.css" />
     <link rel="stylesheet" href="css/icomoon.css" />
    
-
+<script ref="/script.js"></script>
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="style 2nd.css">
   </head>
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
     <nav
@@ -832,7 +833,7 @@
 
         <div class="row no-gutters block-9">
           <div class="col-md-6 order-md-last d-flex">
-            <form action="#" class="bg-light p-4 p-md-5 contact-form">
+            <form action="process_form.php" method="post" class="bg-light p-4 p-md-5 contact-form">
               <div class="form-group">
                 <input
                   type="text"
@@ -877,6 +878,14 @@
             ></div>
           </div>
         </div>
+
+        <div id="message-box" class="message-box">
+          <span class="close-button" onclick="closeMessageBox()">&times;</span>
+          <h2>Message Received!</h2>
+          <p>Thank you for your message. We will get back to you soon.</p>
+        </div>
+
+      
       </div>
     </section>
 
@@ -1060,7 +1069,26 @@
     <script src="js/jquery.animateNumber.min.js"></script>
     <script src="js/scrollax.min.js"></script>
 
-
+    <?php include 'process_form.php'?>
     <script src="js/main.js"></script>
+    <script src="/script.js"></script>
+    <script>
+      // Function to display the message box
+      function showMessage() {
+          document.getElementById("message-box").style.display = "block";
+      }
+  
+      // Function to close the message box
+      function closeMessageBox() {
+          document.getElementById("message-box").style.display = "none";
+      }
+  
+      // Handle form submission
+      document.querySelector("form").addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent the form from submitting normally (refreshing the page)
+          showMessage(); // Display the message box
+          // You can also send the form data to your server here using AJAX if needed
+      });
+  </script>
   </body>
 </html>
